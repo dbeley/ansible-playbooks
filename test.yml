@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: david
+  vars_files:
+      - secret
+
+  tasks:
+      - name: Ping
+        ping:

@@ -1,0 +1,55 @@
+---
+- vars_files:
+      - secret
+
+  user: david
+
+  tasks:
+    - name: Update package list
+      apt:
+          update_cache: yes
+      become: yes
+    - name: Upgrade all packages
+      apt:
+          upgrade: dist
+      become: yes
+    - name: Install needed packages
+      apt:
+          pkg:
+              - neofetch
+              - tmux
+              - git
+              - pipenv
+              - fd-find
+              - curl
+              - fish
+              - neovim
+              - stow
+              - fzf
+      become: yes
+    - name: Delete .bashrc
+      file:
+          path: ~/.bashrc
+          state: absent
+    - name: Delete omf previous install
+      file:
+          path: ~/.local/share/omf
+          state: absent
+    - name: Clone dotfiles
+      git:
+          repo: https://github.com/dbeley/dotfiles
+          dest: ~/dotfiles
+    - name: Stow dotfiles
+      shell: stow bash fish oh-my-fish tmux
+      args:
+          chdir: ~/dotfiles
+    - name: TPM install
+      git:
+          repo: https://github.com/tmux-plugins/tpm
+          dest: ~/.tmux/plugins/tpm
+    - name: oh-my-fish clone
+      git:
+          repo: https://github.com/oh-my-fish/oh-my-fish
+          dest: /tmp/omf
+    - name: oh-my-fish install
+      command: /tmp/omf/bin/install -y --offline --noninteractive
