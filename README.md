@@ -24,7 +24,7 @@ host2
 ...
 ```
 
-- secret.sh script (to authenticate hosts without ssh key auth) :
+- secret.sh script (to decrypt ansible vault) :
 
 ```
 #!/usr/bin/env bash
