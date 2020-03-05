@@ -24,7 +24,18 @@ host2
 ...
 ```
 
-### Running playbook
+- secret.sh script (to authenticate hosts without ssh key auth) :
+
+```
+#!/usr/bin/env bash
+echo password_here
+```
+
+```
+chmod +x secret.sh
+```
+
+### Running a playbook
 
 ```
 ansible-playbook test.yml --vault-password-file secret.sh --ask-pass
