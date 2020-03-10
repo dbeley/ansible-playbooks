@@ -1,5 +1,6 @@
 ---
-- vars_files:
+- hosts: install
+  vars_files:
       - secret
 
   user: david
@@ -26,6 +27,7 @@
               - neovim
               - stow
               - fzf
+              - vnstat
       become: yes
     - name: Delete .bashrc
       file:
@@ -39,6 +41,7 @@
       git:
           repo: https://github.com/dbeley/dotfiles
           dest: ~/dotfiles
+          force: yes
     - name: Stow dotfiles
       shell: stow bash fish oh-my-fish tmux
       args:
@@ -53,3 +56,8 @@
           dest: /tmp/omf
     - name: oh-my-fish install
       command: /tmp/omf/bin/install -y --offline --noninteractive
+    - name: activate vnstat service
+      systemd:
+          state: started
+          enabled: yes
+          name: vnstat

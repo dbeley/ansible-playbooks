@@ -40,3 +40,6 @@ chmod +x secret.sh
 ```
 ansible-playbook test.yml --vault-password-file secret.sh --ask-pass
 ```
+
+- --ask-pass : password for ssh without auth
+- --ask-become-pass : password for sudo
