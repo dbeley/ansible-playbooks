@@ -1,0 +1,10 @@
+---
+- hosts: debian:ubuntu
+
+  user: david
+
+  tasks:
+      - name: Display disk usage for root partition
+        action: shell df -h | grep "/$"
+        register: out
+      - debug: var=out.stdout_lines

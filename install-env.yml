@@ -1,7 +1,5 @@
 ---
-- hosts: install
-  vars_files:
-      - secret
+- hosts: scaleway
 
   user: david
 
@@ -20,14 +18,15 @@
               - neofetch
               - tmux
               - git
-              - pipenv
-              - fd-find
+                # - pipenv
+                # - fd-find
               - curl
               - fish
               - neovim
               - stow
-              - fzf
+                # - fzf
               - vnstat
+              - nfs-common
       become: yes
     - name: Delete .bashrc
       file:
