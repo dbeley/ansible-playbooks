@@ -1,5 +1,7 @@
 ---
-- hosts: scaleway
+- hosts: installenv
+  vars_files:
+      - secret
 
   user: david
 
@@ -24,7 +26,7 @@
               - fish
               - neovim
               - stow
-                # - fzf
+              - fzf
               - vnstat
               - nfs-common
       become: yes

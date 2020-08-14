@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Ansible vault named secret :
+- Ansible vault named secret (for sudo) :
 
 ```
 ansible-vault create secret
@@ -21,6 +21,8 @@ ansible_sudo_pass: password_here
 host1
 [group2]
 host2
+[group3]
+host3 ansigle_ssh_user=username ansible_ssh_pass=password
 ...
 ```
 
