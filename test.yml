@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  user: david
   vars_files:
       - secret
 
