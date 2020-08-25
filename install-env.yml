@@ -6,6 +6,10 @@
   user: david
 
   tasks:
+    - name: Change timezone to Europe/Paris
+      timezone:
+          name: Europe/Paris
+      become: yes
     - name: Update package list
       apt:
           update_cache: yes
@@ -44,7 +48,7 @@
           dest: ~/dotfiles
           force: yes
     - name: Stow dotfiles
-      shell: stow bash fish oh-my-fish tmux
+      shell: stow bash fish oh-my-fish tmux git
       args:
           chdir: ~/dotfiles
     - name: TPM install
