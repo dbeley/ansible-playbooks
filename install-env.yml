@@ -33,6 +33,7 @@
               - fzf
               - vnstat
               - nfs-common
+              - mosh
       become: yes
     - name: Delete .bashrc
       file:
