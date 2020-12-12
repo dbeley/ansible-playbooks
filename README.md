@@ -2,16 +2,24 @@
 
 ## Requirements
 
-- Ansible vault named secret (for sudo) :
+- Ansible vault named secret (for sudo):
 
 ```
 ansible-vault create secret
 ```
 
-- with this content :
+- with this content:
 
 ```
 ansible_sudo_pass: password_here
+```
+
+Telegraf also uses the following variables:
+```
+telegraf_url: url_here
+telegraf_database: name_here
+telegraf_user: user_here
+telegraf_password: password_here
 ```
 
 - Host file named hosts :

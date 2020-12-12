@@ -17,3 +17,5 @@
           upgrade: dist
         become: yes
         become_method: sudo
+        register: out
+      - debug: var=out.stdout_lines

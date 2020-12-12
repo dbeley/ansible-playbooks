@@ -1,0 +1,64 @@
+---
+- hosts: debiantelegraf
+  vars_files:
+      - secret
+
+  user: david
+
+  tasks:
+     - name: Add influxDB key
+       shell: wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+       become: yes
+       args:
+           executable: /bin/bash
+     - name: Source /etc/os-release
+       shell: source /etc/os-release
+       args:
+           executable: /bin/bash
+     - name: Add influxDB repository
+       shell: echo "deb https://repos.influxdata.com/debian buster stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+       become: yes
+       args:
+           executable: /bin/bash
+     - name: Install telegraf
+       apt:
+           pkg:
+               - telegraf
+           update_cache: yes
+       become: yes
+     - name: stop telegraf service
+       systemd:
+           name: telegraf
+           state: stopped
+       become: yes
+     - name: change URL in config file
+       lineinfile:
+           path: /etc/telegraf/telegraf.conf
+           regexp: '^  # urls = '
+           insertafter: '^  # urls = ["https://127.0.0.1:8086"]'
+           line: '  urls = ["{{ telegraf_url }}"]'
+       become: yes
+     - name: change database name in config file
+       lineinfile:
+           path: /etc/telegraf/telegraf.conf
+           regexp: '^  # database = "telegraf"'
+           line: '  database = "{{ telegraf_database }}"'
+       become: yes
+     - name: change login in config file
+       lineinfile:
+           path: /etc/telegraf/telegraf.conf
+           regexp: '^  # username = '
+           line: '  username = "{{ telegraf_user }}"'
+       become: yes
+     - name: change password in config file
+       lineinfile:
+           path: /etc/telegraf/telegraf.conf
+           regexp: '^  # password = '
+           line: '  password = "{{ telegraf_password}}"'
+       become: yes
+     - name: activate telegraf service
+       systemd:
+           name: telegraf
+           state: started
+           enabled: yes
+       become: yes
