@@ -24,8 +24,9 @@
               - neofetch
               - tmux
               - git
-                # - pipenv
-                # - fd-find
+              - exa
+              # - pipenv
+              - fd-find
               - curl
               - fish
               - neovim
