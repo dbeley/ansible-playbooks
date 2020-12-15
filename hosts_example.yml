@@ -1,0 +1,38 @@
+all:
+    vars:
+        user: $USER
+    children:
+        ubuntu:
+            hosts:
+                $HOSTS:
+        debian:
+            hosts:
+                $HOSTS:
+        installenv:
+            hosts:
+                $HOSTS:
+        telegraf:
+            children:
+                ubuntutelegraf:
+                    hosts:
+                        $HOSTS:
+                debiantelegraf:
+                    hosts:
+                        $HOSTS:
+            vars:
+                telegraf_url: $TELEGRAF_URL
+                telegraf_database: $TELEGRAF_DATABASE
+                telegraf_user: $TELEGRAF_USER
+                telegraf_password: TELEGRAF_PASSWORD
+        installboinc:
+            hosts:
+                $HOSTS:
+            vars:
+                boinc_url: $BOINC_URL
+                boinc_username: $BOINC_USERNAME
+                boinc_password: $BOINC_PASSWORD
+        changepasswd:
+            hosts:
+                $HOSTS:
+            vars:
+                password: $PASSWORD

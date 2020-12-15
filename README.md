@@ -14,25 +14,7 @@ ansible-vault create secret
 ansible_sudo_pass: password_here
 ```
 
-Telegraf also uses the following variables:
-```
-telegraf_url: url_here
-telegraf_database: name_here
-telegraf_user: user_here
-telegraf_password: password_here
-```
-
-- Host file named hosts :
-
-```
-[group1]
-host1
-[group2]
-host2
-[group3]
-host3 ansigle_ssh_user=username ansible_ssh_pass=password
-...
-```
+- A valid hosts.yml file. Use the provided hosts_example.yml file for an example.
 
 - secret.sh script (to decrypt ansible vault) :
 
