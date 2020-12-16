@@ -3,7 +3,7 @@
   vars_files:
       - secret
 
-  user: {{ user  }}
+  user: "{{ user }}"
 
   tasks:
     - name: Update package list
@@ -38,7 +38,7 @@
           name: boinc-client
       become: yes
     - name: join account manager
-      shell: "sudo boinccmd --join_acct_mgr {{ boinc_url }} {{ boinc_username }} {{ boinc_password }}"
+      shell: "sudo boinccmd --join_acct_mgr {{ boinc_url }} \"{{ boinc_username }}\" {{ boinc_password }}"
       # become: yes
       args:
         chdir: /etc/boinc-client/

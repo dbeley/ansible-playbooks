@@ -3,7 +3,7 @@
   vars_files:
       - secret
 
-  user: {{ user }}
+  user: "{{ user }}"
 
   tasks:
      - name: Add influxDB key

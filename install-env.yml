@@ -3,7 +3,7 @@
   vars_files:
       - secret
 
-  user: {{ user }}
+  user: "{{ user }}"
 
   tasks:
     - name: Change timezone to Europe/Paris
