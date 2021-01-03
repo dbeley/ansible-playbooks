@@ -1,0 +1,13 @@
+---
+- hosts: install
+  vars_files: secret
+
+  user: "{{ user }}"
+
+  roles:
+  - role: apt-upgrade
+  - role: change-root-passwd
+  # - role: install-boinc
+  # - role: install-docker
+  - role: install-env
+  # - role: install-telegraf

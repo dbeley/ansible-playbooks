@@ -1,0 +1,14 @@
+tasks:
+  - name: Update all cache
+    apt:
+        update_cache: yes
+    become: yes
+    become_method: sudo
+
+  - name: Update all packages to the latest version
+    apt:
+      upgrade: dist
+    become: yes
+    become_method: sudo
+    register: out
+  - debug: var=out.stdout_lines

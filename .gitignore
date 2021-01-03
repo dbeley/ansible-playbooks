@@ -4,3 +4,4 @@ tags
 tags.lock
 hosts
 hosts.yml
+hosts.ini

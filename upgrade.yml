@@ -1,0 +1,8 @@
+---
+- hosts: upgrade
+  vars_files: secret
+
+  user: "{{ user }}"
+
+  roles:
+  - role: apt-upgrade
