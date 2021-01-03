@@ -5,3 +5,4 @@ tags.lock
 hosts
 hosts.yml
 hosts.ini
+group_vars/all.yml

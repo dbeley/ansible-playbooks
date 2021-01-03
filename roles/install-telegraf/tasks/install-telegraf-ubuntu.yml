@@ -1,0 +1,11 @@
+---
+- name: Add influxDB key (Ubuntu)
+  shell: wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+  become: yes
+- name: Source /etc/lsb-release (Ubuntu)
+  shell: source /etc/lsb-release
+  args:
+      executable: /bin/bash
+- name: Add influxDB repository (Ubuntu)
+  shell: echo "deb https://repos.influxdata.com/ubuntu focal stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+  become: yes

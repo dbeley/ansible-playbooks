@@ -1,0 +1,47 @@
+---
+- include_tasks: install-telegraf-debian.yml
+  when: ansible_distribution == 'Debian'
+- include_tasks: install-telegraf-ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+- name: Install telegraf
+  apt:
+      pkg:
+          - telegraf
+      update_cache: yes
+  become: yes
+- name: Stop telegraf service
+  systemd:
+      name: telegraf
+      state: stopped
+  become: yes
+- name: Change URL in config file
+  lineinfile:
+      path: /etc/telegraf/telegraf.conf
+      regexp: '^  # urls = '
+      insertafter: '^  # urls = ["https://127.0.0.1:8086"]'
+      line: '  urls = ["{{ telegraf_url }}"]'
+  become: yes
+- name: Change database name in config file
+  lineinfile:
+      path: /etc/telegraf/telegraf.conf
+      regexp: '^  # database = "telegraf"'
+      line: '  database = "{{ telegraf_database }}"'
+  become: yes
+- name: Change login in config file
+  lineinfile:
+      path: /etc/telegraf/telegraf.conf
+      regexp: '^  # username = '
+      line: '  username = "{{ telegraf_user }}"'
+  become: yes
+- name: Change password in config file
+  lineinfile:
+      path: /etc/telegraf/telegraf.conf
+      regexp: '^  # password = '
+      line: '  password = "{{ telegraf_password}}"'
+  become: yes
+- name: Activate telegraf service
+  systemd:
+      name: telegraf
+      state: started
+      enabled: yes
+  become: yes

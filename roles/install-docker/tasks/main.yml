@@ -1,0 +1,25 @@
+---
+- name: Install needed packages
+  apt:
+      state: present
+      pkg:
+          - docker.io
+          - docker-compose
+  become: yes
+- name: Add user {{ user }} to docker group
+  user:
+      name: '{{ user }}'
+      groups: docker
+      append: yes
+- name: Restart docker service
+  systemd:
+      state: restarted
+      daemon_reload: yes
+      name: docker
+  become: yes
+- name: Make sure docker service is started and enabled
+  systemd:
+      state: started
+      enabled: yes
+      name: docker
+  become: yes

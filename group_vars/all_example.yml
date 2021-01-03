@@ -1,0 +1,8 @@
+# rename this file to all.yml
+user: user
+password: sudo_password
+
+telegraf_url: http://telegraf_url
+telegraf_database: telegraf_database
+telegraf_user: telegraf_user
+telegraf_password: telegraf_password

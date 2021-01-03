@@ -1,10 +1,10 @@
 ---
-- hosts: debian:ubuntu
+- hosts: all
 
   tasks:
       - name: Debug
         debug:
-          msg: "User is {{ user }}. Test_var is {{ test_var }}."
+          msg: "User is {{ user }}."
       - name: Display disk usage for root partition
         action: shell df -h | grep "/$"
         register: out

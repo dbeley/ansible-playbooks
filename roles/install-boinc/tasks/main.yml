@@ -1,0 +1,37 @@
+---
+- name: Update package list
+  apt:
+      update_cache: yes
+  become: yes
+- name: Install needed packages
+  apt:
+      pkg:
+          - boinc-client
+  become: yes
+- name: stop boinc-client service
+  systemd:
+      state: stopped
+      name: boinc-client
+  become: yes
+- name: Remove gui_rpc_auth.cfg
+  file:
+    path: /etc/boinc-client/gui_rpc_auth.cfg
+    state: absent
+  become: yes
+- name: change password in gui_rpc_auth.cfg
+  copy:
+    content: |
+             asdf
+    dest: /etc/boinc-client/gui_rpc_auth.cfg
+  become: yes
+- name: activate boinc-client service
+  systemd:
+      state: started
+      enabled: yes
+      name: boinc-client
+  become: yes
+- name: join account manager
+  shell: "sudo boinccmd --join_acct_mgr {{ boinc_url }} \"{{ boinc_username }}\" {{ boinc_password }}"
+  # become: yes
+  args:
+    chdir: /etc/boinc-client/
