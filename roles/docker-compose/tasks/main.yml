@@ -22,7 +22,7 @@
   # uncomment desired services
   loop:
     - docker-compose-airsonic.yml
-    - docker-compose-boinc.yml
+    # - docker-compose-boinc.yml
     - docker-compose-dokuwiki.yml
     - docker-compose-filebrowser.yml
     - docker-compose-freshrss.yml

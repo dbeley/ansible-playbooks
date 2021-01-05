@@ -7,4 +7,4 @@
     project_src: ~/docker-compose/boinc
   register: output
 - name: Connect to account manager
-  command: "docker exec -it boinc boinccmd --passwd {{ boinc_password }} --join_acct_mgr {{ boinc_account_manager_url }} \"{{ boinc_account_manager_username }}\" {{ boinc_account_manager_password }}"
+  command: "docker exec -it boinc boinccmd --join_acct_mgr {{ boinc_account_manager_url }} \"{{ boinc_account_manager_username }}\" {{ boinc_account_manager_password }}"
