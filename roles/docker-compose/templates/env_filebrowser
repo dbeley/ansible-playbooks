@@ -1,0 +1,3 @@
+DEFAULT_NETWORK={{ traefik_network }}
+DOMAIN={{ docker_domain }}
+ROOT_FOLDER={{ filebrowser_root_folder }}

@@ -1,14 +1,16 @@
 - name: Install .env file
   template:
-    src: templates/env
+    src: templates/env_filebrowser
     dest: ~/docker-compose/filebrowser/.env
 - name: Create necessary files
   file:
-    path: "{{ item }}"
+    path: "{{ necessary_file }}"
     state: touch
   loop:
     - ~/docker-compose/filebrowser/.filebrowser.json
     - ~/docker-compose/filebrowser/filebrowser.db
+  loop_control:
+    loop_var: necessary_file
 - name: Run filebrowser with docker-compose
   community.docker.docker_compose:
     project_src: ~/docker-compose/filebrowser

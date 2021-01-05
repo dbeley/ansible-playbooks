@@ -27,6 +27,8 @@ boinc_password:
 boinc_account_manager_url: https://bam.boincstats.com
 boinc_account_manager_username:
 boinc_account_manager_password:
+# filebrowser
+filebrowser_root_folder:
 # gitea
 gitea_mysql_root_password:
 gitea_mysql_password:
