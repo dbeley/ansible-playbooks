@@ -6,3 +6,33 @@ telegraf_url: http://telegraf_url
 telegraf_database: telegraf_database
 telegraf_user: telegraf_user
 telegraf_password: telegraf_password
+
+# docker general settings
+docker_domain: docker.home
+traefik_network: traefik-network
+
+# docker containers settings
+# medias folder (used by jellyfin, bazarr, radarr, lidarr, etc.)
+docker_medias_folder:
+docker_downloads_folder:
+docker_movies_folder:
+docker_series_folder:
+docker_concerts_folder:
+# airsonic
+airsonic_music_folder:
+airsonic_playlist_folder:
+airsonic_podcast_folder:
+# boinc
+boinc_password:
+boinc_account_manager_url: https://bam.boincstats.com
+boinc_account_manager_username:
+boinc_account_manager_password:
+# gitea
+gitea_mysql_root_password:
+gitea_mysql_password:
+# librespeed
+librespeed_password:
+# pihole
+pihole_password:
+pihole_dns1: 80.67.169.12
+pihole_dns2: 80.67.169.40
