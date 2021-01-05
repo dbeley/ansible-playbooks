@@ -1,0 +1,8 @@
+- name: Install .env file
+  template:
+    src: templates/env
+    dest: ~/docker-compose/influxdb/.env
+- name: Run influxdb with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/influxdb
+  register: output

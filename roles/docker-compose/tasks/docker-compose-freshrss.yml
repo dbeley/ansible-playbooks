@@ -1,0 +1,8 @@
+- name: Install .env file
+  template:
+    src: templates/env
+    dest: ~/docker-compose/freshrss/.env
+- name: Run freshrss with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/freshrss
+  register: output

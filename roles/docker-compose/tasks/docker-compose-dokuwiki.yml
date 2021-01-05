@@ -1,0 +1,8 @@
+- name: Install .env file
+  template:
+    src: templates/env
+    dest: ~/docker-compose/dokuwiki/.env
+- name: Run dokuwiki with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/dokuwiki
+  register: output

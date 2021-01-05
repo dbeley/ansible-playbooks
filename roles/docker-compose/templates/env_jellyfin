@@ -1,0 +1,6 @@
+DEFAULT_NETWORK={{ traefik_network }}
+DOMAIN={{ docker_domain }}
+MEDIA_FOLDER={{ docker_medias }}
+TVSERIES_FOLDER={{ docker_series_folder }}
+MOVIES_FOLDER={{ docker_movies_folder }}
+CONCERTS_FOLDER={{ docker_concerts_folder }}

@@ -1,0 +1,8 @@
+- name: Install .env file
+  template:
+    src: templates/env_qbittorrent
+    dest: ~/docker-compose/qbittorrent/.env
+- name: Run qbittorrent with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/qbittorrent
+  register: output

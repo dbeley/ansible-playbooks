@@ -41,7 +41,6 @@
   git:
       repo: https://github.com/dbeley/dotfiles
       dest: ~/dotfiles
-      force: yes
 - name: Stow dotfiles
   shell: stow bash fish oh-my-fish tmux git
   args:

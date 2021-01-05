@@ -1,0 +1,5 @@
+DEFAULT_NETWORK={{ traefik_network }}
+DOMAIN={{ docker_domain }}
+MUSIC_FOLDER={{ airsonic_music_folder }}
+PLAYLIST_FOLDER={{ airsonic_playlist_folder }}
+PODCAST_FOLDER={{ airsonic_podcast_folder }}

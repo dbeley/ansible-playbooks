@@ -1,0 +1,8 @@
+- name: Install .env file
+  template:
+    src: templates/env_jellyfin
+    dest: ~/docker-compose/jellyfin/.env
+- name: Run jellyfin with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/jellyfin
+  register: output

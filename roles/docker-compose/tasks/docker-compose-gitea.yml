@@ -1,0 +1,8 @@
+- name: Install .env file
+  template:
+    src: templates/env_gitea
+    dest: ~/docker-compose/gitea/.env
+- name: Run gitea with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/gitea
+  register: output

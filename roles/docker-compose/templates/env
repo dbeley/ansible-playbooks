@@ -1,0 +1,2 @@
+DEFAULT_NETWORK={{ traefik_network }}
+DOMAIN={{ docker_domain }}

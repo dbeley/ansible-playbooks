@@ -1,0 +1,4 @@
+DEFAULT_NETWORK={{ traefik_network }}
+DOMAIN={{ docker_domain }}
+MYSQL_ROOT_PASSWORD={{ gitea_mysql_root_password }}
+MYSQL_PASSWORD={{ gitea_mysql_password }}

@@ -1,0 +1,8 @@
+- name: Install .env file
+  template:
+    src: templates/env_librespeed
+    dest: ~/docker-compose/librespeed/.env
+- name: Run librespeed with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/librespeed
+  register: output

@@ -1,0 +1,8 @@
+- name: Install .env file
+  template:
+    src: templates/env_pihole
+    dest: ~/docker-compose/pihole/.env
+- name: Run pihole with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/pihole
+  register: output

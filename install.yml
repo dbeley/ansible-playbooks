@@ -1,23 +1,24 @@
 ---
-- hosts: installenv
-  vars_files: secret
-  user: "{{ user }}"
-  roles:
-  - role: change-root-passwd
-  - role: apt-upgrade
-  - role: install-env
-# - hosts: installboinc
+# - hosts: installenv
 #   vars_files: secret
 #   user: "{{ user }}"
 #   roles:
-#   - role: install-boinc
+#   - role: change-root-passwd
+#   - role: apt-upgrade
+#   - role: install-env
+# # - hosts: installboinc
+# #   vars_files: secret
+# #   user: "{{ user }}"
+# #   roles:
+# #   - role: install-boinc
 - hosts: installdocker
   vars_files: secret
   user: "{{ user }}"
   roles:
   - role: install-docker
-- hosts: installtelegraf
-  vars_files: secret
-  user: "{{ user }}"
-  roles:
-  - role: install-telegraf
+  - role: docker-compose
+# - hosts: installtelegraf
+#   vars_files: secret
+#   user: "{{ user }}"
+#   roles:
+#   - role: install-telegraf

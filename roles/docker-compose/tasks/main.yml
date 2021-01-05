@@ -1,0 +1,40 @@
+---
+- name: Clone docker-compose files
+  git:
+      repo: https://github.com/dbeley/docker-compose
+      dest: ~/docker-compose
+- name: Install .env file
+  template:
+    src: templates/env
+    dest: "{{ item }}"
+  loop:
+    - ~/docker-compose/traefik/.env
+    - ~/docker-compose/.env
+- name: Create traefik docker network
+  community.docker.docker_network:
+    name: "{{ traefik_network }}"
+- name: Run traefik with docker-compose
+  community.docker.docker_compose:
+    project_src: ~/docker-compose/traefik
+  register: output
+- name: Run selected docker-compose containers
+  include_tasks: "{{ item }}"
+  # uncomment desired services
+  loop:
+    - docker-compose-airsonic.yml
+    - docker-compose-boinc.yml
+    - docker-compose-dokuwiki.yml
+    - docker-compose-filebrowser.yml
+    - docker-compose-freshrss.yml
+    - docker-compose-gitea.yml
+    - docker-compose-grafana.yml
+    - docker-compose-homer.yml
+    - docker-compose-influxdb.yml
+    - docker-compose-jellyfin.yml
+    - docker-compose-librespeed.yml
+    - docker-compose-pihole.yml
+    - docker-compose-qbittorrent.yml
+    - docker-compose-searx.yml
+    - docker-compose-shaarli.yml
+    - docker-compose-smokeping.yml
+    - docker-compose-watchtower.yml
