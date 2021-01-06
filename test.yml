@@ -6,3 +6,10 @@
   tasks:
       - name: Ping
         ping:
+      - name: Debug
+        debug:
+          msg: "User is {{ user }}."
+      - name: Display disk usage for root partition
+        action: shell df -h | grep "/$"
+        register: out
+      - debug: var=out.stdout_lines

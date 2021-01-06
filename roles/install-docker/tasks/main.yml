@@ -11,6 +11,9 @@
       name: '{{ user }}'
       groups: docker
       append: yes
+  become: yes
+- name: Reset ssh connection
+  meta: reset_connection
 - name: Restart docker service
   systemd:
       state: restarted
@@ -23,3 +26,6 @@
       enabled: yes
       name: docker
   become: yes
+- name: Get info on docker host
+  community.general.docker_host_info:
+  register: result

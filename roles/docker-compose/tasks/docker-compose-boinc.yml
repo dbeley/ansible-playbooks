@@ -2,6 +2,11 @@
   template:
     src: templates/env_boinc
     dest: ~/docker-compose/boinc/.env
+- name: Delete old BOINC directory
+  file:
+    path: /opt/appdata/boinc
+    state: absent
+  become: yes
 - name: Run boinc with docker-compose
   community.docker.docker_compose:
     project_src: ~/docker-compose/boinc

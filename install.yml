@@ -6,11 +6,6 @@
   - role: change-root-passwd
   - role: apt-upgrade
   - role: install-env
-# - hosts: installboinc
-#   vars_files: secret
-#   user: "{{ user }}"
-#   roles:
-#   - role: install-boinc
 - hosts: installdocker
   vars_files: secret
   user: "{{ user }}"
