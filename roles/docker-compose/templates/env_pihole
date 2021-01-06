@@ -1,5 +1,5 @@
 DEFAULT_NETWORK={{ traefik_network }}
 DOMAIN={{ docker_domain }}
-WEBPASSWORD={{ pihole_password }}
+WEB_PASSWORD={{ pihole_password }}
 DNS1={{ pihole_dns1 }}
 DNS2={{ pihole_dns2 }}

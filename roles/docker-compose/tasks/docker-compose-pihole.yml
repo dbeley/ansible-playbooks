@@ -2,6 +2,17 @@
   template:
     src: templates/env_pihole
     dest: ~/docker-compose/pihole/.env
+- name: Disable DNS stub resolver
+  shell: sed -r -i.orig 's/#?DNSStubListener=yes/DNSStubListener=no/g' /etc/systemd/resolved.conf
+  become: yes
+  when: ansible_distribution == 'Ubuntu'
+- name: Restart systemd-resolved service
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: systemd-resolved
+  become: yes
+  when: ansible_distribution == 'Ubuntu'
 - name: Run pihole with docker-compose
   community.docker.docker_compose:
     project_src: ~/docker-compose/pihole

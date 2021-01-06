@@ -12,8 +12,8 @@ docker_domain: docker.home
 traefik_network: traefik-network
 
 # docker containers settings
-# medias folder (used by jellyfin, bazarr, radarr, lidarr, etc.)
-docker_medias_folder:
+# media folders (used by jellyfin, bazarr, radarr, lidarr, etc.)
+docker_media_folder:
 docker_downloads_folder:
 docker_movies_folder:
 docker_series_folder:
