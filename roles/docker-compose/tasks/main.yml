@@ -1,8 +1,8 @@
 ---
 - name: Clone docker-compose files
   git:
-      repo: https://github.com/dbeley/docker-compose
-      dest: ~/docker-compose
+    repo: https://github.com/dbeley/docker-compose
+    dest: ~/docker-compose
 - name: Install .env file
   template:
     src: templates/env
@@ -20,10 +20,9 @@
     project_src: ~/docker-compose/traefik
   register: output
 - name: Run selected docker-compose containers
-  include_tasks: "{{ docker_service }}"
+  include_tasks: "{{ installdocker_docker_service }}"
   loop:
     - docker-compose-airsonic.yml
-    - docker-compose-boinc.yml
     - docker-compose-dokuwiki.yml
     - docker-compose-filebrowser.yml
     - docker-compose-freshrss.yml
@@ -40,4 +39,4 @@
     - docker-compose-smokeping.yml
     - docker-compose-watchtower.yml
   loop_control:
-    loop_var: docker_service
+    loop_var: installdocker_docker_service

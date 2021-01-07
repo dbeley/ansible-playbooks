@@ -1,0 +1,27 @@
+---
+- name: Clone docker-compose files
+  git:
+    repo: https://github.com/dbeley/docker-compose
+    dest: ~/docker-compose
+# - name: Install .env file
+#   template:
+#     src: templates/env
+#     dest: "{{ env_file }}"
+#   loop:
+#     - ~/docker-compose/traefik/.env
+#     - ~/docker-compose/.env
+#   loop_control:
+#     loop_var: env_file
+# - name: Create traefik docker network
+#   community.docker.docker_network:
+#     name: "{{ traefik_network }}"
+# - name: Run traefik with docker-compose
+#   community.docker.docker_compose:
+#     project_src: ~/docker-compose/traefik
+#   register: output
+- name: Run selected docker-compose containers
+  include_tasks: "{{ installboinc_docker_service }}"
+  loop:
+    - docker-compose-boinc.yml
+  loop_control:
+    loop_var: installboinc_docker_service

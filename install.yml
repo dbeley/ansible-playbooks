@@ -3,17 +3,23 @@
   vars_files: secret
   user: "{{ user }}"
   roles:
-  - role: change-root-passwd
-  - role: apt-upgrade
-  - role: install-env
+    - role: change-root-passwd
+    - role: apt-upgrade
+    - role: install-env
+- hosts: installboinc
+  vars_files: secret
+  user: "{{ user }}"
+  roles:
+    - role: install-docker
+    - role: docker-compose-boinc
 - hosts: installdocker
   vars_files: secret
   user: "{{ user }}"
   roles:
-  - role: install-docker
-  - role: docker-compose
+    - role: install-docker
+    - role: docker-compose
 - hosts: installtelegraf
   vars_files: secret
   user: "{{ user }}"
   roles:
-  - role: install-telegraf
+    - role: install-telegraf

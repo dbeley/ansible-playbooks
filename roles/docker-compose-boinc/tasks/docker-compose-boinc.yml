@@ -11,5 +11,8 @@
   community.docker.docker_compose:
     project_src: ~/docker-compose/boinc
   register: output
+- name: Wait for 30 seconds to let boinc start properly
+  pause:
+    seconds: 30
 - name: Connect to account manager
   command: "docker exec -it boinc boinccmd --join_acct_mgr {{ boinc_account_manager_url }} \"{{ boinc_account_manager_username }}\" {{ boinc_account_manager_password }}"
