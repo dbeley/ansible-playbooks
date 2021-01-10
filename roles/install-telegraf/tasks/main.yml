@@ -14,31 +14,36 @@
       name: telegraf
       state: stopped
   become: yes
-- name: Change URL in config file
-  lineinfile:
-      path: /etc/telegraf/telegraf.conf
-      regexp: '^  # urls = '
-      insertafter: '^  # urls = ["https://127.0.0.1:8086"]'
-      line: '  urls = ["{{ telegraf_url }}"]'
-  become: yes
-- name: Change database name in config file
-  lineinfile:
-      path: /etc/telegraf/telegraf.conf
-      regexp: '^  # database = "telegraf"'
-      line: '  database = "{{ telegraf_database }}"'
-  become: yes
-- name: Change login in config file
-  lineinfile:
-      path: /etc/telegraf/telegraf.conf
-      regexp: '^  # username = '
-      line: '  username = "{{ telegraf_user }}"'
-  become: yes
-- name: Change password in config file
-  lineinfile:
-      path: /etc/telegraf/telegraf.conf
-      regexp: '^  # password = '
-      line: '  password = "{{ telegraf_password}}"'
-  become: yes
+- name: Install config file
+  template:
+    src: templates/telegraf.conf
+    dest: /etc/telegraf/telegraf.conf
+    become: yes
+# - name: Change URL in config file
+#   lineinfile:
+#       path: /etc/telegraf/telegraf.conf
+#       regexp: '^  # urls = '
+#       insertafter: '^  # urls = ["https://127.0.0.1:8086"]'
+#       line: '  urls = ["{{ telegraf_url }}"]'
+#   become: yes
+# - name: Change database name in config file
+#   lineinfile:
+#       path: /etc/telegraf/telegraf.conf
+#       regexp: '^  # database = "telegraf"'
+#       line: '  database = "{{ telegraf_database }}"'
+#   become: yes
+# - name: Change login in config file
+#   lineinfile:
+#       path: /etc/telegraf/telegraf.conf
+#       regexp: '^  # username = '
+#       line: '  username = "{{ telegraf_user }}"'
+#   become: yes
+# - name: Change password in config file
+#   lineinfile:
+#       path: /etc/telegraf/telegraf.conf
+#       regexp: '^  # password = '
+#       line: '  password = "{{ telegraf_password}}"'
+#   become: yes
 - name: Activate telegraf service
   systemd:
       name: telegraf

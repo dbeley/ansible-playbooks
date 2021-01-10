@@ -1,6 +1,6 @@
 - name: Install .env file
   template:
-    src: templates/env
+    src: templates/env_telegraf
     dest: ~/docker-compose/influxdb/.env
 - name: Run influxdb with docker-compose
   community.docker.docker_compose:

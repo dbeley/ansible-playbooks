@@ -1,0 +1,4 @@
+DEFAULT_NETWORK={{ traefik_network }}
+DOMAIN={{ docker_domain }}
+GF_SECURITY_ADMIN_USER={{ grafana_admin_user }}
+GF_SECURITY_ADMIN_PASSWORD={{ grafana_admin_password }}

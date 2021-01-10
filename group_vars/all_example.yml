@@ -2,11 +2,6 @@
 user: user
 password: sudo_password
 
-telegraf_url: http://telegraf_url
-telegraf_database: telegraf_database
-telegraf_user: telegraf_user
-telegraf_password: telegraf_password
-
 # docker general settings
 docker_domain: docker.home
 traefik_network: traefik-network
@@ -38,3 +33,17 @@ librespeed_password:
 pihole_password:
 pihole_dns1: 80.67.169.12
 pihole_dns2: 80.67.169.40
+
+# TIG stack
+# grafana
+grafana_admin_user:
+grafana_admin_password:
+# influxdb
+influxdb_database: telegraf
+influxdb_user:
+influxdb_password:
+# telegraf, generally the same as influxdb
+telegraf_url: http://influxdb
+telegraf_database: telegraf
+telegraf_user:
+telegraf_password:

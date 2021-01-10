@@ -1,0 +1,5 @@
+DEFAULT_NETWORK={{ traefik_network }}
+DOMAIN={{ docker_domain }}
+INFLUX_DB={{ influxdb_database }}
+INFLUX_DB_USER={{ influxdb_user }}
+INFLUX_USER_PASSWORD={{ influxdb_password }}
